@@ -58,15 +58,14 @@ dependencies {
 //}
 
 afterEvaluate {
-    configure<PublishingExtension> {
-
+    publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
 
                 groupId = "com.github.saadiftkhar"
                 artifactId = "scanidcard"
-                version = "1.2-beta"
+                version = "1.3-beta"
             }
         }
     }
