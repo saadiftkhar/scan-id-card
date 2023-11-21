@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
 
 import com.saadiftkhar.scanidcard.R;
 import com.saadiftkhar.scanidcard.cropper.CropImageView;
@@ -40,18 +41,18 @@ import java.io.File;
 public class CameraActivity extends Activity implements View.OnClickListener {
 
     private CropImageView mCropImageView;
-    private Bitmap        mCropBitmap;
+    private Bitmap mCropBitmap;
     private CameraPreview mCameraPreview;
-    private View          mLlCameraCropContainer;
-    private ImageView     mIvCameraCrop;
-    private ImageView     mIvCameraFlash;
-    private View          mLlCameraOption;
-    private View          mLlCameraResult;
-    private TextView      mViewCameraCropBottom;
-    private FrameLayout   mFlCameraOption;
-    private View          mViewCameraCropLeft;
+    private View mLlCameraCropContainer;
+    private ImageView mIvCameraCrop;
+    private ImageView mIvCameraFlash;
+    private View mLlCameraOption;
+    private View mLlCameraResult;
+    private TextView mViewCameraCropBottom;
+    private FrameLayout mFlCameraOption;
+    private View mViewCameraCropLeft;
 
-    private int     mType;//拍摄类型
+    private int mType;//拍摄类型
     private boolean isToast = true;//是否弹吐司，为了保证for循环只弹一次
 
     @Override
@@ -134,10 +135,10 @@ public class CameraActivity extends Activity implements View.OnClickListener {
 
         switch (mType) {
             case IDCardCamera.TYPE_IDCARD_FRONT:
-                mIvCameraCrop.setImageResource(R.mipmap.camera_idcard_front);
+                mIvCameraCrop.setImageResource(R.mipmap.ic_id_card_frame);
                 break;
             case IDCardCamera.TYPE_IDCARD_BACK:
-                mIvCameraCrop.setImageResource(R.mipmap.camera_idcard_back);
+                mIvCameraCrop.setImageResource(R.mipmap.ic_id_card_frame);
                 break;
         }
 
@@ -178,7 +179,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         } else if (id == R.id.iv_camera_flash) {
             if (CameraUtils.hasFlash(this)) {
                 boolean isFlashOn = mCameraPreview.switchFlashLight();
-                mIvCameraFlash.setImageResource(isFlashOn ? R.mipmap.camera_flash_on : R.mipmap.camera_flash_off);
+                mIvCameraFlash.setImageResource(isFlashOn ? R.mipmap.ic_flash_on : R.mipmap.ic_flash_off);
             } else {
                 Toast.makeText(this, R.string.no_flash, Toast.LENGTH_SHORT).show();
             }
@@ -188,7 +189,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
             mCameraPreview.setEnabled(true);
             mCameraPreview.addCallback();
             mCameraPreview.startPreview();
-            mIvCameraFlash.setImageResource(R.mipmap.camera_flash_off);
+            mIvCameraFlash.setImageResource(R.mipmap.ic_flash_off);
             setTakePhotoLayout();
         }
     }

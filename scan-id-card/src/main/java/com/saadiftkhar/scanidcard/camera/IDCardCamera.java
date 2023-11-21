@@ -2,7 +2,8 @@ package com.saadiftkhar.scanidcard.camera;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import java.lang.ref.WeakReference;
 
@@ -14,12 +15,12 @@ import java.lang.ref.WeakReference;
  */
 public class IDCardCamera {
 
-    public final static int    TYPE_IDCARD_FRONT     = 1;//身份证正面
-    public final static int    TYPE_IDCARD_BACK      = 2;//身份证反面
-    public final static int    RESULT_CODE           = 0X11;//结果码
-    public final static int    PERMISSION_CODE_FIRST = 0x12;//权限请求码
-    public final static String TAKE_TYPE             = "take_type";//拍摄类型标记
-    public final static String IMAGE_PATH            = "image_path";//图片路径标记
+    public final static int TYPE_IDCARD_FRONT = 1;//身份证正面
+    public final static int TYPE_IDCARD_BACK = 2;//身份证反面
+    public final static int RESULT_CODE = 0X11;//结果码
+    public final static int PERMISSION_CODE_FIRST = 0x12;//权限请求码
+    public final static String TAKE_TYPE = "take_type";//拍摄类型标记
+    public final static String IMAGE_PATH = "image_path";//图片路径标记
 
     private final WeakReference<Activity> mActivity;
     private final WeakReference<Fragment> mFragment;
@@ -48,7 +49,7 @@ public class IDCardCamera {
     /**
      * 打开相机
      *
-     * @param IDCardDirection 身份证方向（TYPE_IDCARD_FRONT / TYPE_IDCARD_BACK）
+     * @param IDCardDirection（TYPE_IDCARD_FRONT / TYPE_IDCARD_BACK）
      */
     public void openCamera(int IDCardDirection) {
         Activity activity = this.mActivity.get();

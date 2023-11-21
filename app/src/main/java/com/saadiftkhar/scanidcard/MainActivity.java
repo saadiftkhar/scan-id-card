@@ -3,12 +3,14 @@ package com.saadiftkhar.scanidcard;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.saadiftkhar.scanidcard.camera.IDCardCamera;
+import com.saadiftkhar.scanidcard.utils.FileUtils;
 
 /**
  * Author   wildma
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == IDCardCamera.RESULT_CODE) {
             //获取图片路径，显示图片
             final String path = IDCardCamera.getImagePath(data);
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //实际开发中将图片上传到服务器成功后需要删除全部缓存图片
-//                FileUtils.clearCache(this);
+                FileUtils.clearCache(this);
             }
         }
     }

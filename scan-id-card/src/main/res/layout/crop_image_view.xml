@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,13 +13,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            />
 
         <com.saadiftkhar.scanidcard.cropper.CropOverlayView
             android:id="@+id/overlay_crop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/img_crop" />
+            android:layout_alignBottom="@+id/img_crop"
+            />
 
     </RelativeLayout>
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none">
@@ -23,7 +22,7 @@
                 android:gravity="center"
                 android:onClick="front"
                 android:text="Front"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <Button
                 android:layout_width="0dp"
@@ -33,21 +32,21 @@
                 android:gravity="center"
                 android:onClick="back"
                 android:text="Back"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/iv_front"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter" />
 
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter" />
 
     </LinearLayout>
 
