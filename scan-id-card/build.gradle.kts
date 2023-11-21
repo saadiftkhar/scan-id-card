@@ -66,7 +66,7 @@ afterEvaluate {
 
                 groupId = "com.github.saadiftkhar"
                 artifactId = "scanidcard"
-                version = "1.1-beta"
+                version = "1.2-beta"
             }
         }
     }
