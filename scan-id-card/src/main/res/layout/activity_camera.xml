@@ -7,9 +7,9 @@
     <!--相机预览-->
     <com.saadiftkhar.scanidcard.camera.CameraPreview
         android:id="@+id/camera_preview"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +54,10 @@
 
                 <!--手动裁剪区域-->
                 <com.saadiftkhar.scanidcard.cropper.CropImageView
-                    android:visibility="gone"
                     android:id="@+id/crop_image_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
 
                 <!--相机裁剪区域底部-->
                 <TextView
@@ -94,20 +94,20 @@
                     android:id="@+id/iv_camera_flash"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/camera_flash_off" />
+                    android:src="@mipmap/ic_flash_off" />
 
                 <ImageView
                     android:id="@+id/iv_camera_take"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_margin="32dp"
-                    android:src="@mipmap/camera_take" />
+                    android:src="@mipmap/ic_take_image" />
 
                 <ImageView
                     android:id="@+id/iv_camera_close"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/camera_close" />
+                    android:src="@mipmap/ic_close" />
 
             </LinearLayout>
 
@@ -124,14 +124,14 @@
                     android:id="@+id/iv_camera_result_ok"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/camera_result_ok" />
+                    android:src="@mipmap/ic_result_ok" />
 
                 <ImageView
                     android:id="@+id/iv_camera_result_cancel"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="80dp"
-                    android:src="@mipmap/camera_result_cancel" />
+                    android:src="@mipmap/ic_result_cancel" />
 
             </LinearLayout>
 
