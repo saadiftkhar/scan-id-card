@@ -17,9 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.core.app.ActivityCompat;
-
 import com.saadiftkhar.scanidcard.R;
 import com.saadiftkhar.scanidcard.cropper.CropImageView;
 import com.saadiftkhar.scanidcard.cropper.CropListener;
@@ -32,12 +30,6 @@ import com.saadiftkhar.scanidcard.utils.ScreenUtils;
 import java.io.File;
 
 
-/**
- * Author       wildma
- * Github       https://github.com/wildma
- * Date         2018/6/24
- * Desc	        ${拍照界面}
- */
 public class CameraActivity extends Activity implements View.OnClickListener {
 
     private CropImageView mCropImageView;
@@ -60,7 +52,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
 
         /*动态请求需要的权限*/
-        boolean checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, IDCardCamera.PERMISSION_CODE_FIRST,
+        boolean checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, ScanIDCard.PERMISSION_CODE_FIRST,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA});
         if (checkPermissionFirst) {
             init();
@@ -101,7 +93,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
 
     private void init() {
         setContentView(R.layout.activity_camera);
-        mType = getIntent().getIntExtra(IDCardCamera.TAKE_TYPE, 0);
+        mType = getIntent().getIntExtra(ScanIDCard.TAKE_TYPE, 0);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         initView();
         initListener();
@@ -134,11 +126,11 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         mFlCameraOption.setLayoutParams(cameraOptionParams);
 
         switch (mType) {
-            case IDCardCamera.TYPE_IDCARD_FRONT:
-                mIvCameraCrop.setImageResource(R.mipmap.ic_id_card_frame);
+            case ScanIDCard.TYPE_IDCARD_FRONT:
+                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame);
                 break;
-            case IDCardCamera.TYPE_IDCARD_BACK:
-                mIvCameraCrop.setImageResource(R.mipmap.ic_id_card_frame);
+            case ScanIDCard.TYPE_IDCARD_BACK:
+                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame);
                 break;
         }
 
@@ -179,7 +171,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         } else if (id == R.id.iv_camera_flash) {
             if (CameraUtils.hasFlash(this)) {
                 boolean isFlashOn = mCameraPreview.switchFlashLight();
-                mIvCameraFlash.setImageResource(isFlashOn ? R.mipmap.ic_flash_on : R.mipmap.ic_flash_off);
+                mIvCameraFlash.setImageResource(isFlashOn ? R.drawable.ic_flash_on : R.drawable.ic_flash_off);
             } else {
                 Toast.makeText(this, R.string.no_flash, Toast.LENGTH_SHORT).show();
             }
@@ -189,7 +181,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
             mCameraPreview.setEnabled(true);
             mCameraPreview.addCallback();
             mCameraPreview.startPreview();
-            mIvCameraFlash.setImageResource(R.mipmap.ic_flash_off);
+            mIvCameraFlash.setImageResource(R.drawable.ic_flash_off);
             setTakePhotoLayout();
         }
     }
@@ -296,8 +288,8 @@ public class CameraActivity extends Activity implements View.OnClickListener {
                         .append(System.currentTimeMillis()).append(".jpg").toString();
                 if (ImageUtils.save(bitmap, imagePath, Bitmap.CompressFormat.JPEG)) {
                     Intent intent = new Intent();
-                    intent.putExtra(IDCardCamera.IMAGE_PATH, imagePath);
-                    setResult(IDCardCamera.RESULT_CODE, intent);
+                    intent.putExtra(ScanIDCard.IMAGE_PATH, imagePath);
+                    setResult(ScanIDCard.RESULT_CODE, intent);
                     finish();
                 }
             }

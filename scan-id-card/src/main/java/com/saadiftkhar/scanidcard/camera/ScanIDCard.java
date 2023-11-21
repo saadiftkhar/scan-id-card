@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
  * Date         2019/04/28
  * Desc	        ${身份证相机}
  */
-public class IDCardCamera {
+public class ScanIDCard {
 
     public final static int TYPE_IDCARD_FRONT = 1;//身份证正面
     public final static int TYPE_IDCARD_BACK = 2;//身份证反面
@@ -25,23 +25,23 @@ public class IDCardCamera {
     private final WeakReference<Activity> mActivity;
     private final WeakReference<Fragment> mFragment;
 
-    public static IDCardCamera create(Activity activity) {
-        return new IDCardCamera(activity);
+    public static ScanIDCard create(Activity activity) {
+        return new ScanIDCard(activity);
     }
 
-    public static IDCardCamera create(Fragment fragment) {
-        return new IDCardCamera(fragment);
+    public static ScanIDCard create(Fragment fragment) {
+        return new ScanIDCard(fragment);
     }
 
-    private IDCardCamera(Activity activity) {
+    private ScanIDCard(Activity activity) {
         this(activity, (Fragment) null);
     }
 
-    private IDCardCamera(Fragment fragment) {
+    private ScanIDCard(Fragment fragment) {
         this(fragment.getActivity(), fragment);
     }
 
-    private IDCardCamera(Activity activity, Fragment fragment) {
+    private ScanIDCard(Activity activity, Fragment fragment) {
         this.mActivity = new WeakReference(activity);
         this.mFragment = new WeakReference(fragment);
     }

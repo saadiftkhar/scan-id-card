@@ -23,7 +23,7 @@ import com.saadiftkhar.scanidcard.R;
  */
 public class CropImageView extends FrameLayout {
 
-    private ImageView       mImageView;
+    private ImageView mImageView;
     private CropOverlayView mCropOverlayView;
 
     public CropImageView(@NonNull Context context) {

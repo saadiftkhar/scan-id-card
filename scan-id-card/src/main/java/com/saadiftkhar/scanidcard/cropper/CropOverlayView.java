@@ -95,7 +95,7 @@ public class CropOverlayView extends View {
             maxX = getWidth() - minX;
         } else { // image very wide
             int bitmapInCanvasHeight = (int) (bitmap.getHeight() / maxScale);
-            minY = (getHeight() - bitmapInCanvasHeight)/2;
+            minY = (getHeight() - bitmapInCanvasHeight) / 2;
             maxY = getHeight() - minY;
         }
 
@@ -153,9 +153,10 @@ public class CropOverlayView extends View {
 
         Log.e("stk",
                 "vertextPoints=" +
-                topLeft.toString() + " " + topRight.toString() + " " + bottomRight.toString() + " " + bottomLeft.toString());
+                        topLeft.toString() + " " + topRight.toString() + " " + bottomRight.toString() + " " + bottomLeft.toString());
 
     }
+
     private void drawEdge(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
@@ -347,7 +348,7 @@ public class CropOverlayView extends View {
                 + bitmapBottomRight.toString() + " "
                 + bitmapBottomLeft.toString() + " ");
 
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth()+1, bitmap.getHeight()+1, Bitmap.Config.ARGB_8888);
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth() + 1, bitmap.getHeight() + 1, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
         Paint paint = new Paint();
@@ -371,7 +372,7 @@ public class CropOverlayView extends View {
                 Math.max(bitmapBottomRight.x, bitmapTopRight.x),
                 Math.max(bitmapBottomRight.y, bitmapBottomLeft.y));
 
-        if(cropRect.width() <= 0 || cropRect.height() <= 0) { //用户裁剪的宽或高为0
+        if (cropRect.width() <= 0 || cropRect.height() <= 0) { //用户裁剪的宽或高为0
             cropListener.onFinish(null);
             return;
         }
@@ -407,10 +408,10 @@ public class CropOverlayView extends View {
             Log.e("stk", cut.getWidth() + "x" + cut.getHeight());
 
             Log.e("stk", "cutPoints="
-                        + cutTopLeft.toString() + " "
-                        + cutTopRight.toString() + " "
-                        + cutBottomRight.toString() + " "
-                        + cutBottomLeft.toString() + " ");
+                    + cutTopLeft.toString() + " "
+                    + cutTopRight.toString() + " "
+                    + cutBottomRight.toString() + " "
+                    + cutBottomLeft.toString() + " ");
 
             float width = cut.getWidth();
             float height = cut.getHeight();
@@ -436,15 +437,15 @@ public class CropOverlayView extends View {
 
     private float[] generateVertices(int widthBitmap, int heightBitmap) {
 
-        float[] vertices=new float[(WIDTH_BLOCK+1)*(HEIGHT_BLOCK+1)*2];
+        float[] vertices = new float[(WIDTH_BLOCK + 1) * (HEIGHT_BLOCK + 1) * 2];
 
-        float widthBlock = (float)widthBitmap/WIDTH_BLOCK;
-        float heightBlock = (float)heightBitmap/HEIGHT_BLOCK;
+        float widthBlock = (float) widthBitmap / WIDTH_BLOCK;
+        float heightBlock = (float) heightBitmap / HEIGHT_BLOCK;
 
-        for(int i=0;i<=HEIGHT_BLOCK;i++)
-            for(int j=0;j<=WIDTH_BLOCK;j++) {
-                vertices[i * ((HEIGHT_BLOCK+1)*2) + (j*2)] = j * widthBlock;
-                vertices[i * ((HEIGHT_BLOCK+1)*2) + (j*2)+1] = i * heightBlock;
+        for (int i = 0; i <= HEIGHT_BLOCK; i++)
+            for (int j = 0; j <= WIDTH_BLOCK; j++) {
+                vertices[i * ((HEIGHT_BLOCK + 1) * 2) + (j * 2)] = j * widthBlock;
+                vertices[i * ((HEIGHT_BLOCK + 1) * 2) + (j * 2) + 1] = i * heightBlock;
             }
         return vertices;
     }

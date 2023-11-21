@@ -26,12 +26,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.RejectedExecutionException;
 
-/**
- * Author       wildma
- * Github       https://github.com/wildma
- * Date         2018/6/24
- * Desc	        ${自动对焦，定时对焦方式实现}
- */
+
 public class AutoFocusManager implements Camera.AutoFocusCallback {
 
     private static final String TAG = AutoFocusManager.class.getSimpleName();
@@ -45,11 +40,11 @@ public class AutoFocusManager implements Camera.AutoFocusCallback {
         FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_MACRO);
     }
 
-    private final boolean            useAutoFocus;
-    private final Camera             camera;
-    private       boolean            stopped;
-    private       boolean            focusing;
-    private       AsyncTask<?, ?, ?> outstandingTask;
+    private final boolean useAutoFocus;
+    private final Camera camera;
+    private boolean stopped;
+    private boolean focusing;
+    private AsyncTask<?, ?, ?> outstandingTask;
 
     public AutoFocusManager(Camera camera) {
         this.camera = camera;

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.saadiftkhar.scanidcard.camera.IDCardCamera;
+import com.saadiftkhar.scanidcard.camera.ScanIDCard;
 import com.saadiftkhar.scanidcard.utils.FileUtils;
 
 /**
@@ -34,26 +34,26 @@ public class MainActivity extends AppCompatActivity {
      * 身份证正面
      */
     public void front(View view) {
-        IDCardCamera.create(this).openCamera(IDCardCamera.TYPE_IDCARD_FRONT);
+        ScanIDCard.create(this).openCamera(ScanIDCard.TYPE_IDCARD_FRONT);
     }
 
     /**
      * 身份证反面
      */
     public void back(View view) {
-        IDCardCamera.create(this).openCamera(IDCardCamera.TYPE_IDCARD_BACK);
+        ScanIDCard.create(this).openCamera(ScanIDCard.TYPE_IDCARD_BACK);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == IDCardCamera.RESULT_CODE) {
+        if (resultCode == ScanIDCard.RESULT_CODE) {
             //获取图片路径，显示图片
-            final String path = IDCardCamera.getImagePath(data);
+            final String path = ScanIDCard.getImagePath(data);
             if (!TextUtils.isEmpty(path)) {
-                if (requestCode == IDCardCamera.TYPE_IDCARD_FRONT) { //身份证正面
+                if (requestCode == ScanIDCard.TYPE_IDCARD_FRONT) { //身份证正面
                     mIvFront.setImageBitmap(BitmapFactory.decodeFile(path));
-                } else if (requestCode == IDCardCamera.TYPE_IDCARD_BACK) {  //身份证反面
+                } else if (requestCode == ScanIDCard.TYPE_IDCARD_BACK) {  //身份证反面
                     mIvBack.setImageBitmap(BitmapFactory.decodeFile(path));
                 }
 

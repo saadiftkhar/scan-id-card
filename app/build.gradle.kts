@@ -50,9 +50,9 @@ android {
 }
 
 dependencies {
-    implementation("com.github.saadiftkhar:scan-id-card:1.4-beta")
+//    implementation("com.github.saadiftkhar:scan-id-card:1.5-beta")
 
-//    implementation(project(":scan-id-card"))
+    implementation(project(":scan-id-card"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")
