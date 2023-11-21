@@ -19,8 +19,8 @@ import java.util.Calendar;
 public class SensorControler implements SensorEventListener {
     public static final String TAG = "SensorControler";
     private SensorManager mSensorManager;
-    private Sensor        mSensor;
-    private int           mX, mY, mZ;
+    private Sensor mSensor;
+    private int mX, mY, mZ;
     private long lastStaticStamp = 0;
     Calendar mCalendar;
     public static final int DELEY_DURATION = 500;
@@ -29,12 +29,12 @@ public class SensorControler implements SensorEventListener {
 
     boolean isFocusing = false;
     boolean canFocusIn = false;  //内部是否能够对焦控制机制
-    boolean canFocus   = false;
+    boolean canFocus = false;
 
-    public static final int STATUS_NONE   = 0;
+    public static final int STATUS_NONE = 0;
     public static final int STATUS_STATIC = 1;
-    public static final int STATUS_MOVE   = 2;
-    private             int STATUE        = STATUS_NONE;
+    public static final int STATUS_MOVE = 2;
+    private int STATUE = STATUS_NONE;
 
     private SensorControler(Context context) {
         mSensorManager = (SensorManager) context.getSystemService(Activity.SENSOR_SERVICE);

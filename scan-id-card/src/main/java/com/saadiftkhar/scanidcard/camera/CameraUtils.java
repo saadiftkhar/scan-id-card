@@ -14,12 +14,6 @@ public class CameraUtils {
 
     private static Camera camera;
 
-    /**
-     * 检查是否有相机
-     *
-     * @param context
-     * @return
-     */
     public static boolean hasCamera(Context context) {
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
             // this device has a camera
@@ -30,11 +24,6 @@ public class CameraUtils {
         }
     }
 
-    /**
-     * 打开相机
-     *
-     * @return
-     */
     public static Camera openCamera() {
         camera = null;
         try {
@@ -49,11 +38,6 @@ public class CameraUtils {
         return camera;
     }
 
-    /**
-     * 检查是否有闪光灯
-     *
-     * @return true：有，false：无
-     */
     public static boolean hasFlash(Context context) {
         return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
