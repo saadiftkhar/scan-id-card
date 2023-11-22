@@ -43,20 +43,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.release
-//
-//                groupId = 'com.github.saadiftkhar'
-//                artifactId = 'scanidcard'
-//                version = '1.0'
-//            }
-//        }
-//    }
-//}
-
 afterEvaluate {
     publishing {
         publications {
@@ -65,7 +51,6 @@ afterEvaluate {
 
                 groupId = "com.github.saadiftkhar"
                 artifactId = "scanidcard"
-                version = "1.3-beta"
             }
         }
     }
