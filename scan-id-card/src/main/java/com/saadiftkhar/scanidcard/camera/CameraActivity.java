@@ -129,10 +129,10 @@ public class CameraActivity extends Activity implements View.OnClickListener {
 
         switch (mType) {
             case ScanIDCard.TYPE_IDCARD_FRONT:
-                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame);
+                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame_sic);
                 break;
             case ScanIDCard.TYPE_IDCARD_BACK:
-                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame);
+                mIvCameraCrop.setImageResource(R.drawable.ic_id_card_frame_sic);
                 break;
         }
 
@@ -173,7 +173,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         } else if (id == R.id.iv_camera_flash) {
             if (CameraUtils.hasFlash(this)) {
                 boolean isFlashOn = mCameraPreview.switchFlashLight();
-                mIvCameraFlash.setImageResource(isFlashOn ? R.drawable.ic_flash_on : R.drawable.ic_flash_off);
+                mIvCameraFlash.setImageResource(isFlashOn ? R.drawable.ic_flash_on_sic : R.drawable.ic_flash_off_sic);
             } else {
                 Toast.makeText(this, R.string.no_flash, Toast.LENGTH_SHORT).show();
             }
@@ -183,7 +183,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
             mCameraPreview.setEnabled(true);
             mCameraPreview.addCallback();
             mCameraPreview.startPreview();
-            mIvCameraFlash.setImageResource(R.drawable.ic_flash_off);
+            mIvCameraFlash.setImageResource(R.drawable.ic_flash_off_sic);
             setTakePhotoLayout();
         }
     }
