@@ -25,14 +25,6 @@ public class ScanIDCard {
     private final WeakReference<Activity> mActivity;
     private final WeakReference<Fragment> mFragment;
 
-    public static ScanIDCard create(Activity activity) {
-        return new ScanIDCard(activity);
-    }
-
-    public static ScanIDCard create(Fragment fragment) {
-        return new ScanIDCard(fragment);
-    }
-
     private ScanIDCard(Activity activity) {
         this(activity, (Fragment) null);
     }
@@ -44,6 +36,27 @@ public class ScanIDCard {
     private ScanIDCard(Activity activity, Fragment fragment) {
         this.mActivity = new WeakReference(activity);
         this.mFragment = new WeakReference(fragment);
+    }
+
+    public static ScanIDCard create(Activity activity) {
+        return new ScanIDCard(activity);
+    }
+
+    public static ScanIDCard create(Fragment fragment) {
+        return new ScanIDCard(fragment);
+    }
+
+    /**
+     * 获取图片路径
+     *
+     * @param data Intent
+     * @return 图片路径
+     */
+    public static String getImagePath(Intent data) {
+        if (data != null) {
+            return data.getStringExtra(IMAGE_PATH);
+        }
+        return "";
     }
 
     /**
@@ -61,19 +74,6 @@ public class ScanIDCard {
         } else {
             activity.startActivityForResult(intent, IDCardDirection);
         }
-    }
-
-    /**
-     * 获取图片路径
-     *
-     * @param data Intent
-     * @return 图片路径
-     */
-    public static String getImagePath(Intent data) {
-        if (data != null) {
-            return data.getStringExtra(IMAGE_PATH);
-        }
-        return "";
     }
 }
 

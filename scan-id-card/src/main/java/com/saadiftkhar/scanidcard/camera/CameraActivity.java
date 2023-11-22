@@ -17,7 +17,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.core.app.ActivityCompat;
+
 import com.saadiftkhar.scanidcard.R;
 import com.saadiftkhar.scanidcard.cropper.CropImageView;
 import com.saadiftkhar.scanidcard.cropper.CropListener;
