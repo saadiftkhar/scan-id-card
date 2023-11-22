@@ -94,14 +94,14 @@
                     android:id="@+id/iv_camera_flash"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_flash_off" />
+                    android:src="@drawable/ic_flash_off_sic" />
 
                 <ImageView
                     android:id="@+id/iv_camera_take"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_margin="32dp"
-                    android:src="@drawable/ic_take_image" />
+                    android:src="@drawable/ic_take_image_sic" />
 
                 <ImageView
                     android:id="@+id/iv_camera_close"
@@ -109,7 +109,7 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:rotation="-90"
-                    android:src="@drawable/ic_arrow_back" />
+                    android:src="@drawable/ic_arrow_back_sic" />
 
             </LinearLayout>
 
@@ -126,14 +126,14 @@
                     android:id="@+id/iv_camera_result_ok"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_tick" />
+                    android:src="@drawable/ic_tick_sic" />
 
                 <ImageView
                     android:id="@+id/iv_camera_result_cancel"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="80dp"
-                    android:src="@drawable/ic_cross" />
+                    android:src="@drawable/ic_cross_sic" />
 
             </LinearLayout>
 
