@@ -18,23 +18,22 @@ import java.util.Calendar;
  */
 public class SensorControler implements SensorEventListener {
     public static final String TAG = "SensorControler";
+    public static final int DELEY_DURATION = 500;
+    public static final int STATUS_NONE = 0;
+    public static final int STATUS_STATIC = 1;
+    public static final int STATUS_MOVE = 2;
+    private static SensorControler mInstance;
+    Calendar mCalendar;
+    boolean isFocusing = false;
+    boolean canFocusIn = false;  //内部是否能够对焦控制机制
+    boolean canFocus = false;
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private int mX, mY, mZ;
     private long lastStaticStamp = 0;
-    Calendar mCalendar;
-    public static final int DELEY_DURATION = 500;
-    private static SensorControler mInstance;
     private int foucsing = 1;  //1 表示没有被锁定 0表示被锁定
-
-    boolean isFocusing = false;
-    boolean canFocusIn = false;  //内部是否能够对焦控制机制
-    boolean canFocus = false;
-
-    public static final int STATUS_NONE = 0;
-    public static final int STATUS_STATIC = 1;
-    public static final int STATUS_MOVE = 2;
     private int STATUE = STATUS_NONE;
+    private CameraFocusListener mCameraFocusListener;
 
     private SensorControler(Context context) {
         mSensorManager = (SensorManager) context.getSystemService(Activity.SENSOR_SERVICE);
@@ -178,14 +177,11 @@ public class SensorControler implements SensorEventListener {
         foucsing = 1;
     }
 
-
-    private CameraFocusListener mCameraFocusListener;
+    public void setCameraFocusListener(CameraFocusListener mCameraFocusListener) {
+        this.mCameraFocusListener = mCameraFocusListener;
+    }
 
     public interface CameraFocusListener {
         void onFocus();
-    }
-
-    public void setCameraFocusListener(CameraFocusListener mCameraFocusListener) {
-        this.mCameraFocusListener = mCameraFocusListener;
     }
 }

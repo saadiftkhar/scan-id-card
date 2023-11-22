@@ -42,6 +42,8 @@ public class CropOverlayView extends View {
     private int currentHeight = 0;
 
     private int minX, maxX, minY, maxY;
+    private int WIDTH_BLOCK = 40;
+    private int HEIGHT_BLOCK = 40;
 
     public CropOverlayView(Context context) {
         super(context);
@@ -431,9 +433,6 @@ public class CropOverlayView extends View {
             cropListener.onFinish(stretch);
         }
     }
-
-    private int WIDTH_BLOCK = 40;
-    private int HEIGHT_BLOCK = 40;
 
     private float[] generateVertices(int widthBitmap, int heightBitmap) {
 
