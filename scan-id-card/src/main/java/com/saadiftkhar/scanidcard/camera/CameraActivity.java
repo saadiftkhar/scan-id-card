@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -46,16 +47,25 @@ public class CameraActivity extends Activity implements View.OnClickListener {
     private FrameLayout mFlCameraOption;
     private View mViewCameraCropLeft;
 
-    private int mType;//拍摄类型
-    private boolean isToast = true;//是否弹吐司，为了保证for循环只弹一次
+    private int mType;
+    private boolean isToast = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*动态请求需要的权限*/
-        boolean checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, ScanIDCard.PERMISSION_CODE_FIRST,
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA});
+        boolean checkPermissionFirst;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, ScanIDCard.PERMISSION_CODE_FIRST,
+                    new String[]{Manifest.permission.CAMERA});
+        } else {
+            checkPermissionFirst = PermissionUtils.checkPermissionFirst(this, ScanIDCard.PERMISSION_CODE_FIRST,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA});
+
+        }
+
         if (checkPermissionFirst) {
             init();
         }
@@ -75,9 +85,9 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         for (int i = 0; i < permissions.length; i++) {
             if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
                 isPermissions = false;
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) { //用户选择了"不再询问"
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) { //The user selected "Don't ask again"
                     if (isToast) {
-                        Toast.makeText(this, "请手动打开该应用需要的权限", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Please manually open the permissions required for this application", Toast.LENGTH_SHORT).show();
                         isToast = false;
                     }
                 }
@@ -85,10 +95,10 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         }
         isToast = true;
         if (isPermissions) {
-            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "允许所有权限");
+            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "Allow all permissions");
             init();
         } else {
-            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "有权限不允许");
+            Log.d("onRequestPermission", "onRequestPermissionsResult: " + "Permission is not allowed");
             finish();
         }
     }
@@ -117,14 +127,16 @@ public class CameraActivity extends Activity implements View.OnClickListener {
         float screenMaxSize = Math.max(ScreenUtils.getScreenWidth(this), ScreenUtils.getScreenHeight(this));
         float height = (int) (screenMinSize * 0.75);
         float width = (int) (height * 75.0f / 47.0f);
-        //获取底部"操作区域"的宽度
+
+        //Get the width of the bottom "operation area"
         float flCameraOptionWidth = (screenMaxSize - width) / 2;
         LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams((int) width, ViewGroup.LayoutParams.MATCH_PARENT);
         LinearLayout.LayoutParams cropParams = new LinearLayout.LayoutParams((int) width, (int) height);
         LinearLayout.LayoutParams cameraOptionParams = new LinearLayout.LayoutParams((int) flCameraOptionWidth, ViewGroup.LayoutParams.MATCH_PARENT);
         mLlCameraCropContainer.setLayoutParams(containerParams);
         mIvCameraCrop.setLayoutParams(cropParams);
-        //获取"相机裁剪区域"的宽度来动态设置底部"操作区域"的宽度，使"相机裁剪区域"居中
+
+        //Get the width of the "camera cropping area" to dynamically set the width of the bottom "operation area" to center the "camera cropping area"
         mFlCameraOption.setLayoutParams(cameraOptionParams);
 
         switch (mType) {
@@ -136,7 +148,7 @@ public class CameraActivity extends Activity implements View.OnClickListener {
                 break;
         }
 
-        /*增加0.5秒过渡界面，解决个别手机首次申请权限导致预览界面启动慢的问题*/
+        /*Added a 0.5-second transition interface to solve the problem of slow startup of the preview interface caused by individual mobile phones applying for permission for the first time.*/
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
