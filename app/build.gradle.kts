@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation("com.github.saadiftkhar:scan-id-card:v1.0.0")
+    implementation("com.github.saadiftkhar:scan-id-card:v1.0.1")
 
 //    implementation(project(":scan-id-card"))
     implementation("androidx.core:core-ktx:1.9.0")
