@@ -12,12 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.saadiftkhar.scanidcard.camera.ScanIDCard;
 import com.saadiftkhar.scanidcard.utils.FileUtils;
 
-/**
- * Author   wildma
- * Github   https://github.com/wildma
- * Date     2018/6/24
- * Desc     ${身份证相机使用例子}
- */
 public class MainActivity extends AppCompatActivity {
     private ImageView mIvFront;
     private ImageView mIvBack;
@@ -30,16 +24,11 @@ public class MainActivity extends AppCompatActivity {
         mIvBack = (ImageView) findViewById(R.id.iv_back);
     }
 
-    /**
-     * 身份证正面
-     */
     public void front(View view) {
         ScanIDCard.create(this).openCamera(ScanIDCard.TYPE_IDCARD_FRONT);
     }
 
-    /**
-     * 身份证反面
-     */
+
     public void back(View view) {
         ScanIDCard.create(this).openCamera(ScanIDCard.TYPE_IDCARD_BACK);
     }
@@ -48,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == ScanIDCard.RESULT_CODE) {
-            //获取图片路径，显示图片
+
             final String path = ScanIDCard.getImagePath(data);
             if (!TextUtils.isEmpty(path)) {
                 if (requestCode == ScanIDCard.TYPE_IDCARD_FRONT) { //身份证正面
@@ -57,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     mIvBack.setImageBitmap(BitmapFactory.decodeFile(path));
                 }
 
-                //实际开发中将图片上传到服务器成功后需要删除全部缓存图片
                 FileUtils.clearCache(this);
             }
         }
