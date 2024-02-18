@@ -4,4 +4,5 @@
     <string name="touch_to_focus">Touch screen to focus</string>
     <string name="crop_fail">Cropping failed</string>
     <string name="no_flash">The device does not support flash</string>
+    <string name="manually_open_permission">Please manually open the permissions required for this application</string>
 </resources>

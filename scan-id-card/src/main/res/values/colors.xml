@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="preview_mock">#9a000000</color>
-    <color name="color_000000">#000000</color>
-    <color name="color_afff">#afff</color>
+    <color name="color_black_9a000000">#9a000000</color>
+    <color name="color_black_000000">#000000</color>
+    <color name="color_white_afff">#afff</color>
     <color name="color_white_ffffff">#FFFFFF</color>
 </resources>
